@@ -92,7 +92,7 @@
                     <div onclick="taskDisp()" style=" margin-bottom: 20px; position: absolute; bottom: 1;"><img style="width: 40px;" src="Images/tsk.png" alt=""><br>Task List</div>
                     <div onclick="" style=" margin-bottom: 20px; position: absolute; bottom: 1; margin-left: 70px;"><img style="width: 40px;" src="Images/phone.png" alt=""><br> Phone</div>
                     <div onclick="" style=" margin-bottom: 20px; position: absolute; bottom: 1; margin-left: 140px;"><img style="width: 40px;" src="Images/camera.png" alt=""><br> Camera</div>
-                    <div onclick="" style="  margin-bottom: 20px;position: absolute; bottom: 1; margin-left: 220px;"><img style="width: 40px;" src="Images/calculator.png" alt=""><br> Calculator</div>
+                    <div onclick="calculator()" style="  margin-bottom: 20px;position: absolute; bottom: 1; margin-left: 220px;"><img style="width: 40px;" src="Images/calculator.png" alt=""><br> Calculator</div>
                 </section>
                 <section style="color:white; font-size: 13px; margin-left: 4px;">
                     <div onclick="taskDisp()" style=" margin-bottom: 20px; position: absolute; bottom: 0;"><img style="width: 40px;" src="Images/tsk.png" alt=""><br>Task List</div>
@@ -123,6 +123,13 @@
         }
         function fizzbuss() {
             screen.innerHTML = '<object style="overflow-y: hidden;" width ="100%" height="900vh" type="text/html" data="fizzBuzz.html"></object>'
+            // screen.style.backgroundColor = "white"
+            // screen.style.background = "none"
+            // screen.style.overflowY = "hidden"
+        }
+
+        function calculator() {
+            screen.innerHTML = '<object style="overflow-y: hidden;" width ="100%" height="900vh" type="text/html" data="calculator.html"></object>'
             // screen.style.backgroundColor = "white"
             // screen.style.background = "none"
             // screen.style.overflowY = "hidden"

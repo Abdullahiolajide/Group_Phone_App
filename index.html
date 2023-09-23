@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        main{
+            height: 90vh;
+            border: 10px solid black;
+            border-bottom: 25px solid black;
+            border-top: 10px solid black;
+            width: 290px;
+            border-radius: 20px;
+            background-color: rgb(29, 29, 29);
+        }
+        #rear-cam{
+            width: 26px;
+            height: 18px;
+            border-radius: 0 0 12rem 12rem;
+            background-color: black;
+            border: 2px solid black;
+            position: absolute;
+            margin: 0 130px;
+            
+        }
+        .small-cam{
+            width: 15px; 
+            height: 14px;
+            border: 2px solid rgb(58, 56, 56); 
+            background-color: rgb(90, 90, 90); 
+            border-radius: 50px;
+        }
+        #content{
+            height: 60vh;
+            width: 100%;
+            background-color: blue;
+            /* position: absolute; */
+        }
+        #volume{
+            height: 150px;
+            margin-top: -300px;
+            border: 1px solid black;
+            background-color: black;
+            border-radius:  0 5px 5px 0;
+            margin-left: -6px;
+        }
+        #power{
+            margin-left: -14px;
+            height: 70px;
+            border: 1px solid black;
+            background-color: black;
+            border-radius:  0 5px 5px 0;
+            
+        }
+    </style>
+    <center>
+        <div style="display: flex; align-items: center; margin-left: 33%;">
+            <main id="screen"></main>
+            <button id="volume"></button>
+            <button id="power"></button>
+        </div>
+        
+    </center>
+
+    <script>
+        let volumee = document.getElementById("volume");
+        let screen = document.getElementById("screen")
+        let powerBtn = document.getElementById("power")
+
+        powerBtn.addEventListener("click", powerOn)
+        function powerOn() {
+
+             if (screen.innerHTML == "") {
+                //console.log(screen.innerHTML)
+                //alert("worked")
+                screen.innerHTML = `<video style="position: relative; top: 30%;" width= "100%" src="videos/Gleaming Metal Logo_free.mp4" autoplay></video>`
+            
+            setTimeout(function(){
+                screen.style.background = "url(Images/wallpaper.jpg)"
+                screen.style.backgroundSize = "cover"
+                screen.style.position = "relative"
+                //screen.innerHTML += `<div style="background-color: green; width margin:80vh 80% 0 0;"><img style="width: 40px;" src="Images/tsk.png" alt=""></div>`
+                screen.innerHTML =`
+                <section style="color:white; font-size: 13px; margin-top: 64vh; margin-left: 4px;">
+                    <div onclick="taskDisp()" style=" margin-bottom: 20px; position: absolute; bottom: 1;"><img style="width: 40px;" src="Images/tsk.png" alt=""><br>Task List</div>
+                    <div onclick="" style=" margin-bottom: 20px; position: absolute; bottom: 1; margin-left: 70px;"><img style="width: 40px;" src="Images/phone.png" alt=""><br> Phone</div>
+                    <div onclick="" style=" margin-bottom: 20px; position: absolute; bottom: 1; margin-left: 140px;"><img style="width: 40px;" src="Images/camera.png" alt=""><br> Camera</div>
+                    <div onclick="" style="  margin-bottom: 20px;position: absolute; bottom: 1; margin-left: 220px;"><img style="width: 40px;" src="Images/calculator.png" alt=""><br> Calculator</div>
+                </section>
+                <section style="color:white; font-size: 13px; margin-left: 4px;">
+                    <div onclick="taskDisp()" style=" margin-bottom: 20px; position: absolute; bottom: 0;"><img style="width: 40px;" src="Images/tsk.png" alt=""><br>Task List</div>
+                    <div onclick="" style=" margin-bottom: 20px; position: absolute; bottom: 0; margin-left: 70px;"><img style="width: 40px;" src="Images/phone.png" alt=""><br> Phone</div>
+                    <div onclick="" style=" margin-bottom: 20px; position: absolute; bottom: 0; margin-left: 140px;"><img style="width: 40px;" src="Images/camera.png" alt=""><br> Camera</div>
+                    <div onclick="" style="  margin-bottom: 20px;position: absolute; bottom: 0; margin-left: 220px;"><img style="width: 40px;" src="Images/calculator.png" alt=""><br> Calculator</div>
+                </section>`
+            }, 8000)
+             }else{
+                ///console.log("you")
+                screen.innerHTML = "";
+                screen.style.background = "none"
+                screen.style.backgroundColor = "rgb(29, 29, 29)"
+             }
+        }
+
+
+        // volumee.addEventListener("click", function() {
+        //     screen.innerHTML += '<object width ="100%" height="900vh" type="text/html" data="taskList.html"></object>'
+        //     screen.style.backgroundColor = "white"
+        // })
+        function taskDisp() {
+            screen.innerHTML = '<object style="overflow-y: hidden;" width ="100%" height="900vh" type="text/html" data="taskList.html"></object>'
+            screen.style.backgroundColor = "white"
+            screen.style.background = "none"
+            screen.style.overflowY = "hidden"
+
+        }
+
+    </script>
+
+    <!-- <video src="videos/583c17b9d3e34e25a38b2b6a1147994b.mp4" controls></video>
+    <audio src="audios/Recording (5).m4a" controls></audio> -->
+</body>
+</html>

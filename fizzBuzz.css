@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body{
-    background-image: url(/e-photo-of-a-round-mirror-on-the-grass-reflecting-poppies.jpeg);
+    background-image: url(e-photo-of-a-round-mirror-on-the-grass-reflecting-poppies.jpeg);
     background-position: center;
     background-size: cover;
     background-position: center;
@@ -66,7 +66,7 @@ input{
     border-bottom-left-radius: 10px;
     padding-top: 10px;
 }
-@media screen  and (max-width:482px){
+@media screen  and (max-width:600px){
     .container{
         border: 2px solid white;
         width: 90%;

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+<body>
+
+    <style>
+        body{
+            background: url(wallpaperflare.com_wallpaper\ \(1\).jpg);
+            font-weight: lighter;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        section{
+            width:fit-content;
+            height: fit-content;
+            backdrop-filter: blur(10px);
+            outline: 5px;
+            border: 1px solid rgb(255, 255, 255,0.2);
+            /* margin-: auto; */
+        }
+        input{
+            width: 90%;
+            height: 5vh;
+            border: 1px solid rgb(255, 255, 255);
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            background-color: transparent;
+            color: white;
+            font-size: 19px;
+        }
+        input::placeholder{
+            font-weight: lighter;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
+        }
+        h1{
+            color: white;
+            font-size: 30px;
+            font-weight: 450;
+        }
+        #check{
+            width: 90%;
+            color:white;
+            padding: 7px 0 7px 0;
+            border: 1px solid black;
+            background-color: black;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-size: 19px;
+            border-radius: 5px;
+            font-weight: lighter;
+        }
+        #check:hover{
+            background-color: transparent;
+            cursor: pointer;
+            transition-duration: 0.4s;
+        }
+        #meridian{
+            display: flex;
+        }
+        #meridian div{
+            width: 100%;
+        }
+        #temprature{
+            font-size: 25px;
+            padding-top: 20px;
+        }
+        #description{
+            text-transform: uppercase;
+            padding-top: 6px;
+        }
+        main{
+            display: none;
+        }
+        /* #icon{
+            width: 40%;
+        } */
+        /* @media screen and (max-width: 600px) {
+            input{
+                border: 5px solid green;
+            }
+        } */
+    </style>
+    <center>
+        <section style="color: white;">
+            <h1>Weather Forecast</h1>
+            <input type="text" placeholder="City name" id="checkInp">
+            <button id="check">CHECK</button>
+            <main id="weather">
+                <div id="description"></div>
+            <img src="" alt="" id="icon">
+            <div id="meridian">
+                <div>
+                    <div>LONGITUDE</div>
+                    <span id="long">32787</span>
+                </div>
+                <div>
+                    <div>LATITUDE</div>
+                    <span id="lat">7827</span>
+                </div>
+            </div>
+            <div id="temprature">TEMPRATURE</div><br><br>
+            <div style="font-size: 25px;">COUNTRY:</div>
+            <span id="country"></span><br><br>
+            <div style="font-size: 25px;">Wind speed:</div>
+            <span id="wind-speed"></span>
+            </main>
+        </section>
+    </center>
+
+
+    <script>
+        // VARIABLES
+        let tempratures = document.querySelector("#temprature");
+        let long = document.querySelector("#long");
+        let lat = document.querySelector("#lat");
+        let description = document.querySelector("#description");
+        let icon = document.querySelector("#icon");
+        let weathers = document.querySelector("#weather");
+        let windSpeed = document.querySelector("#wind-speed");
+        let country = document.querySelector("#country")
+
+        
+
+
+        //let endpoint = "https://jsonplaceholder.typicode.com/users"
+        const fetchInfo = async ()=>{
+            weathers.style.display = "block";
+            let cityName;
+        // cityName = "Ibadan";
+            cityName = document.getElementById("checkInp").value;
+            let endpoint = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=88f2173231835c50c3984c96fb001ba1`;
+            let response = await fetch(endpoint);
+            console.log(response);
+            let convertedResponce = await response.json();
+            let temprature = convertedResponce.main.temp;
+            let longitude = convertedResponce.coord.lon;
+            let latitude = convertedResponce.coord.lat
+            let descrip = convertedResponce.weather[0].description;
+            let windSpeedd = convertedResponce.wind.speed;
+            let countryy = convertedResponce.sys.country;
+
+            console.log(convertedResponce);
+            console.log(cityName)
+
+
+            let tempCelcious = temprature - 273;
+
+            //DECLARATIONS
+            long.textContent = longitude;
+            lat.textContent = latitude;
+            description.textContent = descrip;
+            console.log(descrip)
+            tempratures.textContent =Math.round(tempCelcious) +"°C";
+            windSpeed.textContent = windSpeedd +"km/h";
+            country.textContent = countryy
+            icon.src = "http://openweathermap.org/img/w/"+convertedResponce.weather[0].icon+".png";
+            console.log(tempCelcious)
+            
+        }
+        // fetchInfo();
+        document.querySelector("#check").addEventListener("click", fetchInfo)
+
+    </script>
+</body>
+</html>
